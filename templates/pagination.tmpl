@@ -1,0 +1,56 @@
+<bx:template name='pagination'>
+  <div class="bx--pagination" bx:attrs='id' data-pagination bx:events when:pageData='Object.assign(self, ev.detail)'>
+    <div class="bx--pagination__left">
+      <div class="bx--select">
+        <label for="select-id" class="bx--visually-hidden">Number of items per page</label>
+        <select bx:attrs='id' id="${id}" name='pageSize' bx:value='pageSize:pageSize' class="bx--select__input" data-items-per-page>
+        {@select key=query.pageSize type="number"}
+          <option class="bx--select__option" value="10" {@eq value="10"}{@none}selected{/none}{/eq}>10</option>
+          <option class="bx--select__option" value="15" {@eq value="15"}selected{/eq}>15</option>
+          <option class="bx--select__option" value="20" {@eq value="20"}selected{/eq}>20</option>
+          <option class="bx--select__option" value="25" {@eq value="25"}selected{/eq}>25</option>
+          <option class="bx--select__option" value="30" {@eq value="30"}selected{/eq}>30</option>
+        {/select}
+        </select>
+        <svg class="bx--select__arrow">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#service--down-arrow"></use>
+        </svg>
+      </div>
+      <span class="bx--pagination__text">Items per page&emsp;|&emsp;</span>
+      <span class="bx--pagination__text">
+        <span data-displayed-item-range>
+          <bx:value anchor='start' value='start'>0</bx:value> - 
+          <bx:value anchor='end' value='end'>0</bx:value>
+        </span> of 
+        <span data-total-items>
+          <bx:value anchor='total' value='total'>0</bx:value>
+        </span> items
+      </span>
+    </div>
+    <div class="bx--pagination__right" bx:events when:pageChange='self.pageLabel = self.page'>
+      <span class="bx--pagination__text">
+        <span data-displayed-page-number>
+          <bx:value anchor='pageLabel' value='pageLabel'></bx:value>
+        </span>
+         of 
+        <span data-total-pages>
+          <bx:value anchor='pageCount' value='pageCount'></bx:value>
+        </span> 
+        pages
+      </span>
+      <button class="bx--pagination__button bx--pagination__button--backward" data-page-backward bx:events for:click='var p = parseInt(self.page); if (isNaN(--p)) self.page = 1; if (p > 0) self.page = p;'>
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#service--chevron"></use>
+        </svg>
+      </button>
+      <label for="page-number-input" class="bx--visually-hidden">Page number input</label>
+      <input id="page-number-input" bx:value='page:page' name='page' type="text" class="bx--text__input" placeholder="{query.page}" value="{query.page}" bx:emit='change:pageChange' data-page-number-input />
+      <button class="bx--pagination__button bx--pagination__button--forward" data-page-forward bx:events for:click='var p = parseInt(self.page); self.page = isNaN(++p) ? 2 : p;'>
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#service--chevron"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</bx:template>
+

@@ -1,0 +1,67 @@
+<bx:template name='form' shadow='yes'>
+  <form bx:attrs='name, id, method, target' data-form method='POST' bx:value='*'></form>
+</bx:template>
+
+<bx:template name='radio'>
+  <input bx:attrs='id, value, name' class="bx--radio" type="radio" />
+  <label bx:attrs='for' for="${id}" class="bx--radio__label">
+    <span class="bx--radio__appearance"></span>
+    <bx:value>${label}</bx:value>
+  </label>
+</bx:template>
+
+<bx:template name='checkbox'>
+  <label bx:attrs='class' class+=' bx--checkbox__label' checkbox:maps map:checked='chkbox.checked'>
+    <bx:if cond='"${disabled}" === "disabled"'>
+      <bx:if cond='"${checked}" === "checked"'>
+        <input checkbox:anchor='chkbox' bx:attrs='value,name' disabled checked class='bx--checkbox bx--checkbox--svg' type='checkbox' value='${value}' name='${name}' />
+      <else>
+        <input checkbox:anchor='chkbox' bx:attrs='value,name' disabled class='bx--checkbox bx--checkbox--svg' type='checkbox' value='${value}' name='${name}' />
+      </else></bx:if>
+    <else>
+      <bx:if cond='"${checked}" === "checked"'>
+        <input checkbox:anchor='chkbox' bx:attrs='value,name,bx:emit' checked class='bx--checkbox bx--checkbox--svg' type='checkbox' name='${name}' bx:emit='change:${toggleEvent}' />
+      <else>
+        <input checkbox:anchor='chkbox' bx:attrs='value,name,bx:emit' class='bx--checkbox bx--checkbox--svg' type='checkbox' name='${name}' bx:emit='change:${toggleEvent}' />
+      </else></bx:if>
+    </else></bx:if>
+    <span class='bx--checkbox__appearance'>
+      <svg class='bx--checkbox__checkmark'>
+        <use xlink:href='https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#support--check-padding'></use>
+      </svg>
+    </span>
+    <span checkbox:anchor='label' class='bx--checkbox__label-text' checkbox:value='${label}'></span>
+  </label>
+</bx:template>
+
+<bx:template name='checkbox_input-label'>
+  <input bx:attrs='id, value, name' class="bx--checkbox" type="checkbox" />
+  <label bx:attrs='for' for="${id}" class="bx--checkbox__label" bx:value='label'>
+    <span class="bx--checkbox__appearance"></span>
+  </label>
+</bx:template>
+
+<bx:template name='input'>
+  <label bx:attrs='for' for="${id}" class="bx--form__label" bx:value='${label}'></label>
+  <input bx:attrs='id, value, placeholder' id="${id}" type='text' class='bx--text__input' />
+</bx:template>
+
+<bx:template name='hidden'>
+  <input bx:attrs='name,value,placeholder' type='hidden' />
+</bx:template>
+
+<bx:template name='select'>
+  <div class="bx--select">
+    <bx:template name='option'>
+      <option bx:attrs='value' class="bx--select__option" value="${value}">
+          <bx:value value='*'></bx:value>
+      </option>
+    </bx:template>
+    <label bx:attrs='for' for="${id}" class="bx--form__label" bx:value='${label}'></label>
+    <select bx:attrs='id' id="${id}" class="bx--select__input" bx:value='*'></select>
+    <svg class="bx--select__arrow">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{aceCommonStaticFilePath}{@hashValue obj=aceCommonFiles prop="sprite.svg" /}#service--down-arrow"></use>
+    </svg>
+  </div>
+</bx:template>
+

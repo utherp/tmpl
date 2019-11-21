@@ -1,0 +1,37 @@
+<bx:template name='overflow' icon='app-actions--overflow_menu_icon'>
+  <div bx:attrs='id' data-overflow-menu class='bx--overflow-menu' tabindex=0 aria-label='${aria}' overflow:maps map:checked='chkbox.checked'>
+    <bx:if cond='"${toggle}" === "icon"'>
+      <svg class='bx--overflow-menu__icon'>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#common--arrows"></use>
+      </svg>
+    </bx:if>
+    <bx:if cond='"${text}"'>
+      <bx:value>${text}</bx:value> 
+    </bx:if>
+    <bx:if cond='"${toggle}" === "button"'>
+      <button class="bx--search__filter" type="button">
+        <svg class='bx--search__icon bx--overflow-menu__icon'>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#common--arrows"></use>
+        </svg>
+        <span class="filter__text">Filters</span>
+      </button>
+    </bx:if>
+
+    <ul class='bx--overflow-menu__options'>
+      <bx:target name='option'>
+        <li>
+          <bx:if cond='"${type}" == "checkbox"'>
+            <bx:checkbox bx:attrs='name,value,label,class' class+=' bx--overflow-menu__btn' option:value='*'></bx:checkbox>
+          <else>
+            <button class='bx--overflow-menu__btn' option:target='*' bx:attrs='bx:emit' bx:emit='click:${event}'></button>
+          </else></bx:if>
+        </li>
+      </bx:target>
+    </ul>
+  </div>
+</bx:template>
+
+<bx:template name='overflow-button'>
+  <button bx:attrs='class,overflow-id' type="button" bx:value='*'></button>
+</bx:template>
+

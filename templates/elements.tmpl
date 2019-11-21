@@ -1,0 +1,37 @@
+<bx:template name='text'>
+  <label bx:attrs='for' for="${id}" class="bx--form__label" bx:value='label'></label>
+  <textarea bx:attrs='id, rows, cols, placeholder' class="bx--textarea__input" rows="4" cols="50" bx:value='*'></textarea>
+</bx:template>
+
+<bx:template name='button'>
+  <button bx:attrs='class' class+=" bx--btn" bx:value='*'></button>
+</bx:template>
+
+<bx:template name='buttons'>
+  <div class='bx--modal__buttons-container' bx:value='*'></div>
+</bx:template>
+
+<bx:template name='link'>
+  <a bx:attrs='class' class+=' bx--link' bx:value='*'></a>
+</bx:template>
+
+<bx:template name='icon-other'>
+  <svg bx:attrs='class'>
+    <use bx:attrs='xlink:href' xlink:href='${name}' bx:value='*'></use>
+  </svg>
+</bx:template>
+
+<bx:template name='icon'>
+  <svg bx:attrs='class'>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" bx:attrs='xlink:href' xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#${name}"></use>
+  </svg>
+</bx:template>
+
+<bx:template name='spinner'>
+  <div data-loading class='bx--loading'>
+    <svg class='bx--loading__svg' viewBox='-75 -75 150 150'>
+      <circle cx='0' cy='0' r='37.5'></circle>
+    </svg>
+  </div>
+</bx:template>
+

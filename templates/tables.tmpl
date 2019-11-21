@@ -1,0 +1,27 @@
+<bx:template name='table'>
+  <table bx:attrs='id,class' data-table class+=' bx--table'>
+    <thead bx:value='table-head'>
+    </thead>
+    <tfoot class='bx--table__foot' bx:value='table-foot'></tfoot>
+    <tbody class='bx--table__body' bx:value='table-body'>
+    </tbody>
+  </table>
+</bx:template>
+
+<bx:template name='tr'>
+  <bx:tag tag:name='tr' data-tablerow bx:attrs='class,id' class+=' bx--table__row' bx:value='*'></bx:tag>
+</bx:template>
+
+<bx:template name='td'>
+  <bx:tag tag:name='td' data-tablecell bx:attrs='class,id' class+=' bx--table__body__cell' bx:value='*'></bx:tag>
+</bx:template>
+
+<bx:template name='th'>
+  <bx:tag tag:name='th' data-tablecell bx:attrs='id,name,sorter,bx:field,bx:idField,class' class='bx--table__column-title'>
+    <bx:value value='*'></bx:value>
+    <svg class='bx--table__column-title--filter-icon'>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#support--chevron-down"></use>
+    </svg>
+  </bx:tag>
+</bx:template>
+

@@ -1,0 +1,22 @@
+<bx:template name='search'>
+  <div bx:attrs='id,class' data-overflow-menu class+=" bx--search" role="search">
+    <svg class='bx--search__icon--magnifier magnifier'>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dev-console.stage1.ng.bluemix.net/api/v4/img/sprite.svg#common--search"></use>
+    </svg>
+    <label bx:attrs='for' for="${id}" class="bx--search__label"></label>
+    <input search:value='query:query' bx:attrs='id, placeholder, name, autocomplete, value' type="search" class="bx--search__input" />
+    <bx:if cond='"${use-filter}"'>
+      <bx:overflow-button overflow-id='overflow' class='bx--search__filter'>
+        <svg class='bx--search__icon--filter bx--overflow-menu__icon'><use xlink:href='#common--arrows'></use></svg>
+        <span class="filter__text">Filters</span>
+      </bx:overflow-button>
+      <bx:overflow id='overflow'>
+        <search:target scope='search' name='filter'>
+          <option option:maps option:map:checked='children.0.checked' overflow:attrs='overflow:value' value='${filter_value}' type='checkbox' bx:attrs='value,name,label,checked' label='${title}'></option>
+        </search:if>
+        </search:target>
+      </bx:overflow>
+    </bx:if>
+  </div>
+</bx:template>
+
